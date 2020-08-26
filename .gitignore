@@ -1,0 +1,7 @@
+node_modules
+dist
+coverage
+.vscode
+.env
+yarn.lock
+storybook-static
