@@ -7,23 +7,38 @@ export default {
 
 const ChildComponent = ({ id }: { id: string }) => {
   const {
-    status: { loading, error, success },
+    status: { loading, error, success, data },
     actions,
-  } = useStatus(id);
+  } = useStatus(id, "Initial data");
 
   return (
     <div>
       <h1>{`I am listen ${id} node`}</h1>
       {loading ? (
-        <div>Loading...</div>
+        <>
+          <div>Loading...</div>
+          <div>
+            InitialData:
+            {data}
+          </div>
+        </>
       ) : (
         <>
           {error && <div>{error instanceof Error ? error.message : error}</div>}
-          {success && <div>Success</div>}
+          {success && (
+            <div>
+              {`Success
+                DATA:
+                 ${data}`}
+            </div>
+          )}
         </>
       )}
       <br />
-      <button type="button" onClick={() => actions.success()}>
+      <button
+        type="button"
+        onClick={() => actions.success("This is the DATA!!!")}
+      >
         Success
       </button>
       <button type="button" onClick={() => actions.error("Esto es un error")}>

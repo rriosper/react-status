@@ -13,10 +13,10 @@ import {
 } from "./types";
 import { omit, getInitialStatus } from "./utils";
 
-const useStatus = (key: StatusKey): UseStatus => {
+const useStatus = (key: StatusKey, initialData?: unknown): UseStatus => {
   const store = useContext(context);
   const [status, setStatus]: [Status, SetStatus] = useState(
-    store.getData(key) || getInitialStatus(key)
+    store.getData(key) || getInitialStatus(key, initialData)
   );
 
   function set(updateFn) {
@@ -31,9 +31,14 @@ const useStatus = (key: StatusKey): UseStatus => {
     };
   });
 
-  const success: SuccessAction = () => {
+  const success: SuccessAction = (data = null) => {
     if (!status.success) {
-      store.updateData(key, { success: true, loading: false, error: null });
+      store.updateData(key, {
+        success: true,
+        loading: false,
+        error: null,
+        data,
+      });
     }
   };
 

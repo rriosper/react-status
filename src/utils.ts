@@ -12,9 +12,13 @@ export const omit = <T>(
     return acc;
   }, {});
 
-export const getInitialStatus = (key: StatusKey): Status => ({
+export const getInitialStatus = (
+  key: StatusKey,
+  initialData?: unknown
+): Status => ({
   key,
   loading: true,
   error: null,
   success: false,
+  data: initialData,
 });

@@ -7,6 +7,7 @@ export type Status = {
   loading: boolean;
   success: boolean;
   error: null | string | Error;
+  data: null | unknown;
 };
 
 export type ProviderProps = {
@@ -15,7 +16,7 @@ export type ProviderProps = {
 
 export type SetStatus = React.Dispatch<Status>;
 
-export type SuccessAction = () => void;
+export type SuccessAction = (data?: unknown) => void;
 export type ErrorAction = (err?: StatusError) => void;
 export type LoadingAction = () => void;
 
