@@ -5,23 +5,25 @@ export default {
   title: "Component",
 };
 
+type Test = {
+  value: boolean;
+};
+
 const ChildComponent = ({ id }: { id: string }) => {
   const {
     status: { loading, error, success, data },
     actions,
-  } = useStatus(id, "Initial data");
+  } = useStatus<Test[]>(id, []);
 
   return (
     <div>
       <h1>{`I am listen ${id} node`}</h1>
       {loading ? (
-        <>
-          <div>Loading...</div>
-          <div>
-            InitialData:
-            {data}
-          </div>
-        </>
+        <div>
+          {`Loading
+                DATA:
+                 ${JSON.stringify(data)}`}
+        </div>
       ) : (
         <>
           {error && <div>{error instanceof Error ? error.message : error}</div>}
@@ -29,16 +31,13 @@ const ChildComponent = ({ id }: { id: string }) => {
             <div>
               {`Success
                 DATA:
-                 ${data}`}
+                 ${JSON.stringify(data)}`}
             </div>
           )}
         </>
       )}
       <br />
-      <button
-        type="button"
-        onClick={() => actions.success("This is the DATA!!!")}
-      >
+      <button type="button" onClick={() => actions.success([{ value: true }])}>
         Success
       </button>
       <button type="button" onClick={() => actions.error("Esto es un error")}>

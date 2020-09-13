@@ -2,12 +2,18 @@ export type StatusKey = string;
 
 export type StatusError = null | string | Error;
 
+export type StatusKeys = "loading" | "success" | "error" | "data";
+
 export type Status = {
   key: StatusKey;
   loading: boolean;
   success: boolean;
   error: null | string | Error;
   data: null | unknown;
+};
+
+export type TypedStatus<T> = Status & {
+  data: T;
 };
 
 export type ProviderProps = {
@@ -20,15 +26,17 @@ export type SuccessAction = (data?: unknown) => void;
 export type ErrorAction = (err?: StatusError) => void;
 export type LoadingAction = () => void;
 
-export type Actions = {
-  success: SuccessAction;
+export type TypedSuccessAction<T> = (data?: T) => void;
+
+export type Actions<T> = {
+  success: TypedSuccessAction<T>;
   error: ErrorAction;
   loading: LoadingAction;
 };
 
-export type UseStatus = {
-  actions: Actions;
-  status: Partial<Status>;
+export type UseStatus<T> = {
+  actions: Actions<T>;
+  status: Pick<TypedStatus<T>, StatusKeys>;
 };
 
 export type Observers = Record<string, SetStatus[]>;
