@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/rriosper/react-status/compare/v1.1.0...v1.1.1) (2020-09-13)
+
+
+### Bug Fixes
+
+* Update dependencies ([183f25a](https://github.com/rriosper/react-status/commit/183f25a0a354cca51d052fc5a502bbfd55673d0a))
+
 # [1.1.0](https://github.com/rriosper/react-status/compare/v1.0.0...v1.1.0) (2020-09-13)
 
 
