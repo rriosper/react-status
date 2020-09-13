@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/rriosper/react-status/compare/v1.1.1...v1.1.2) (2020-09-13)
+
+
+### Bug Fixes
+
+* Add generics to type data prop ([fdb66b6](https://github.com/rriosper/react-status/commit/fdb66b643fd67fefe5d3ef30d36d4424feeea29e))
+
 ## [1.1.1](https://github.com/rriosper/react-status/compare/v1.1.0...v1.1.1) (2020-09-13)
 
 
